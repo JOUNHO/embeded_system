@@ -1,0 +1,14 @@
+1.해당 프로젝트를 실행하기 위해서는  전원을 인가 해준 뒤, TFT-LCD에 흰색 화면이 뜨면 
+$ sudo modprobe spicc 
+$ sudo modprobe fbtft_device name=odroidc_tft32 rotate=270 gpios=reset:116,dc:115 speed=32000000 cs=0
+위 두가지를 수행해준다. (LCD 검정화면 됨)
+
+2. tftlab.c 파일과 27개의 .bmp파일들이 들어있는 디렉토리를 mini에 다운받는다.
+
+3. 27개의 bmp파일과 tftlab.c를 같은 디렉토리 내에 있도록 위치시킨다.
+
+3. 이후
+$ gcc tftlab.c -o tftlab -lwiringPi -lwiringPiDev -lpthread -lcrypt -lm -lrt
+해당 내용을 수행해주면, tftlab 실행파일이 생성된다.
+
+4. 마지막으로 $ ./tftlab 을 수행해주면 해당 프로젝트가 실행된다. 
